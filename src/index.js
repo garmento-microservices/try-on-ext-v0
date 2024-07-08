@@ -15,4 +15,4 @@ window.TryOnExtensionApp = (elementId, props) => {
   );
 };
 
-window.TryOnExtensionApp("root", { designId: "6655d9f9-9fad-43e9-936e-9258bea13815" });
+// window.TryOnExtensionApp("root", { designId: "6655d9f9-9fad-43e9-936e-9258bea13815" });
