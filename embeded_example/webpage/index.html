@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Try-On Extension</title>
+    <link rel="stylesheet" href="plugin.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="plugin.js"></script>
+  </head>
+  <body>
+    <div class="w-screen flex flex-col items-center">
+      <div class="w-3/4">
+        <div class="product grid grid-cols-5 gap-4">
+          <h1 class="col-span-5 text-2xl font-bold text-center py-2">
+            Product details
+          </h1>
+          <div class="col-span-2 h-96 flex justify-between">
+            <div
+              class="border w-full flex justify-center items-center overflow-clip"
+            >
+              <!-- <img src="https://picsum.photos/360/540" /> -->
+              <img src="http://garmento.io/api/assets/assets/ce593d25-bcc8-4fc7-be14-0c432b732187" />
+            </div>
+          </div>
+          <div class="col-span-3">
+            <h1 class="text-xl font-bold">Product name</h1>
+            <h1 class="text-xl font-semibold">$10.00</h1>
+            <div class="mt-4">
+              <h3 class="italic font-semibold">Description</h3>
+              <small class=""
+                >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+                ut fringilla quam, at semper mauris. Sed gravida justo non
+                posuere luctus. Pellentesque nec vehicula lectus. Proin vel
+                nulla augue. Pellentesque a dui lobortis, dignissim mauris sed,
+                consequat tortor. Class aptent taciti sociosqu ad litora
+                torquent per conubia nostra, per inceptos himenaeos. Phasellus
+                vel urna non leo eleifend consectetur sed consequat metus.
+                Integer vel mattis felis. Duis arcu massa, bibendum vitae ligula
+                id, tempus vestibulum libero. Nam luctus augue eget posuere
+                tempus. Quisque aliquam nunc eleifend metus laoreet, in ornare
+                odio rutrum. Sed lacus dolor, ultricies vitae turpis non,
+                condimentum viverra eros. Cras bibendum accumsan varius. Class
+                aptent taciti sociosqu ad litora torquent per conubia nostra,
+                per inceptos himenaeos.</small
+              >
+            </div>
+            <div class="my-4">
+              <button
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              >
+                Add to cart
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="widget">
+          <h1 class="text-2xl font-bold text-center py-2">Try it on</h1>
+          <div id="root"></div>
+          <script defer>
+            window.initTryOnExtensionApp("root", {
+              designId: "ce593d25-bcc8-4fc7-be14-0c432b732187",
+              backendHost: "http://garmento.io",
+            });
+          </script>
+        </div>
+        <div class="footer h-12"></div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -25,13 +25,14 @@ function App(props) {
   const [selectedFileObjURL, setSelectedFileObjURL] = useState();
   /** @type {[File | undefined, react.Dispatch<react.SetStateAction<File>>]} */
   const [designFile, setDesignFile] = useState();
+  const backendHost = props.backendHost;
 
   /** @type {TryOnApi} */
-  const tryOnApi = useMemo(() => new TryOnApi(), []);
+  const tryOnApi = useMemo(() => new TryOnApi(backendHost), []);
   /** @type {DesignsApi} */
-  const designApi = useMemo(() => new DesignsApi(), []);
+  const designApi = useMemo(() => new DesignsApi(backendHost), []);
   /** @type {AuthApi} */
-  const authApi = useMemo(() => new AuthApi(), []);
+  const authApi = useMemo(() => new AuthApi(backendHost), []);
   const designId = props.designId;
 
   useEffect(() => {
@@ -71,7 +72,8 @@ function App(props) {
               ? "Error connecting to other services"
               : `${err}`
           );
-        }
+        },
+        150000
       );
     } catch (err) {
       setTimeout(() => {
@@ -137,7 +139,13 @@ function App(props) {
         {isLoading ? (
           <Spinner />
         ) : !!result ? (
-          ""
+          <img
+            src={result.resultImageURL}
+            alt="image"
+            width={600}
+            height={900}
+            style={{ maxHeight: "24rem", width: "auto" }}
+          />
         ) : (
           error || "Click Go and the result will appear here"
         )}

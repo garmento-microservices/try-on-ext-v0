@@ -11,12 +11,15 @@ import axios, { Axios } from "axios";
 
 export class TryOnApi {
   /**
+   * @param {string} [host=""] 
    * @param {AbortController} abortController
    * @param {Axios} _axios
    */
   constructor(
+    host = "",
     abortController = new AbortController(),
     _axios = axios.create({
+      baseURL: host,
       withCredentials: false,
       signal: abortController.signal,
     })
@@ -65,14 +68,14 @@ export class TryOnApi {
    * @param {File} referenceImage
    * @param {(response: TryOnResponse) => void} [onResponse]
    * @param {(error: any) => void} [onError]
-   * @param {number} [timeout=90000]
+   * @param {number} [timeout=120000]
    */
   async createJobAndWaitForResult(
     garmentImage,
     referenceImage,
     onResponse = () => undefined,
     onError = () => undefined,
-    timeout = 90000
+    timeout = 120000,
   ) {
     const job = await this.createTryOnJob(garmentImage, referenceImage);
     const id = job.id;
